@@ -27,10 +27,34 @@ A real-time speech-to-speech conversation system built in Go that uses:
 
 ## Usage
 
-Run the application:
+### Running from source
 ```
 go run main.go
 ```
+
+### Building static binaries
+
+Build for your current platform:
+```
+go build -o speech-chat
+```
+
+Build for all major platforms:
+```
+# Windows (64-bit)
+GOOS=windows GOARCH=amd64 go build -o speech-chat.exe
+
+# macOS (Intel)
+GOOS=darwin GOARCH=amd64 go build -o speech-chat-mac-intel
+
+# macOS (Apple Silicon)
+GOOS=darwin GOARCH=arm64 go build -o speech-chat-mac-arm64
+
+# Linux (64-bit)
+GOOS=linux GOARCH=amd64 go build -o speech-chat-linux
+```
+
+The resulting binaries will be statically linked and can be run directly on their respective platforms without additional dependencies (except FFplay which is still required for audio playback).
 
 The system will:
 1. Listen for your speech input
